@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CEA – Circular Economy AI Marketplace (Demo)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+    }
+    header {
+      background: #1b4f72;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      gap: 20px;
+    }
+    section {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    #add-item, #ai-box {
+      flex: 1 1 280px;
+      max-width: 350px;
+    }
+    #marketplace {
+      flex: 2 1 420px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #1b4f72;
+    }
+    label {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+    input, select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background: #1b4f72;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #163d56;
+    }
+    .item-card {
+      border-bottom: 1px solid #ddd;
+      padding: 8px 0;
+    }
+    .item-card:last-child {
+      border-bottom: none;
+    }
+    .tag {
+      display: inline-block;
+      background: #e8f4f8;
+      color: #1b4f72;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      margin-right: 4px;
+    }
+    .price {
+      font-weight: bold;
+      color: #1e8449;
+    }
+    .small {
+      font-size: 12px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>CEA – Circular Economy AI Marketplace (Demo)</h1>
+  <p>Connecting people and businesses to buy, sell, and exchange up‑cycled and surplus materials in Australia.</p>
+</header>
+
+<main>
+  <!-- Add new item form -->
+  <section id="add-item">
+    <h2>Add Listing</h2>
+    <p class="small">Demo of how users or companies can list second‑hand or surplus items.</p>
+
+    <label>Item name:
+      <input id="nameInput" type="text" placeholder="Example: Used solar panel">
+    </label>
+
+    <label>Category:
+      <select id="categoryInput">
+        <option value="Electronics">Electronics</option>
+        <option value="Construction">Construction</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Agriculture">Agriculture</option>
+        <option value="Other">Other</option>
+      </select>
+    </label>
+
+    <label>Condition:
+      <select id="conditionInput">
+        <option value="Like new">Like new</option>
+        <option value="Good">Good</option>
+        <option value="Needs repair">Needs repair</option>
+      </select>
+    </label>
+
+    <label>Price (AUD):
+      <input id="priceInput" type="number" min="0" step="0.01" placeholder="100">
+    </label>
+
+    <button onclick="addItem()">Add to Marketplace</button>
+  </section>
+
+  <!-- AI suggestion box -->
+  <section id="ai-box">
+    <h2>CEA “AI” Suggestion</h2>
+    <p class="small">
+      This simple demo shows how AI could recommend the most efficient option
+      (here we pick the cheapest item in a category).
+    </p>
+
+    <label>Choose category for suggestion:
+      <select id="aiCategory" onchange="updateSuggestion()">
+        <option value="Electronics">Electronics</option>
+        <option value="Construction">Construction</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Agriculture">Agriculture</option>
+        <option value="Other">Other</option>
+      </select>
+    </label>
+
+    <div id="aiSuggestion" style="margin-top:10px; font-size:14px;"></div>
+  </section>
+
+  <!-- Marketplace list -->
+  <section id="marketplace">
+    <h2>Marketplace Listings</h2>
+    <div id="itemsContainer"></div>
+  </section>
+</main>
+
+<script>
+  // Initial demo data
+  let items = [
+    {name: "Reused steel beams", category: "Construction", condition: "Good", price: 500},
+    {name: "Second‑hand office chairs (set of 10)", category: "Furniture", condition: "Like new", price: 300},
+    {name: "Surplus solar panel", category: "Electronics", condition: "Like new", price: 200},
+    {name: "Used irrigation pipes", category: "Agriculture", condition: "Good", price: 150}
+  ];
+
+  function renderItems() {
+    const container = document.getElementById("itemsContainer");
+    container.innerHTML = "";
+    items.forEach(item => {
+      const div = document.createElement("div");
+      div.className = "item-card";
+      div.innerHTML = `
+        <strong>${item.name}</strong><br>
+        <span class="tag">${item.category}</span>
+        <span class="tag">${item.condition}</span><br>
+        <span class="price">$${item.price.toFixed(2)}</span> AUD
+      `;
+      container.appendChild(div);
+    });
+    updateSuggestion();
+  }
+
+  function addItem() {
+    const name = document.getElementById("nameInput").value.trim();
+    const category = document.getElementById("categoryInput").value;
+    const condition = document.getElementById("conditionInput").value;
+    const price = parseFloat(document.getElementById("priceInput").value);
+
+    if (!name || isNaN(price)) {
+      alert("Please enter a name and a valid price.");
+      return;
+    }
+
+    items.push({name, category, condition, price});
+    document.getElementById("nameInput").value = "";
+    document.getElementById("priceInput").value = "";
+    renderItems();
+  }
+
+  // Simple "AI" suggestion: pick cheapest item in chosen category
+  function updateSuggestion() {
+    const cat = document.getElementById("aiCategory").value;
+    const suggestionBox = document.getElementById("aiSuggestion");
+    const filtered = items.filter(i => i.category === cat);
+    if (filtered.length === 0) {
+      suggestionBox.textContent =
+        "No items in this category yet. Add one on the left.";
+      return;
+    }
+    let best = filtered[0];
+    filtered.forEach(i => {
+      if (i.price < best.price) best = i;
+    });
+    suggestionBox.innerHTML = `
+      Recommended (lowest‑cost, circular option):<br>
+      <strong>${best.name}</strong> – 
+      <span class="price">$${best.price.toFixed(2)}</span> AUD
+    `;
+  }
+
+  // First render
+  renderItems();
+</script>
+
+</body>
+</html>
