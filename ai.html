@@ -6,66 +6,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0b76b5;
-      --primary-dark: #095f8f;
-      --nav-bg: linear-gradient(90deg, #0b3c5d, #0b76b5);
-      --bg: #edf2f7;
-      --card-bg: #ffffff;
-      --accent: #f5a623;
-      --danger: #b00020;
-      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.12);
+      --gold: #d4af37;
+      --gold-dark: #b89024;
+      --black: #111827;
+      --bg: #ffffff;
+      --card-bg: #f9fafb;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
       --radius: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #f3f4ff, #edf2f7 40%, #dde5f0 100%);
+      background: var(--bg);
       margin: 0;
       padding: 0;
-      color: #1f2933;
+      color: var(--black);
     }
 
-
     .nav {
-      background: var(--nav-bg);
-      color: #fff;
-      padding: 12px 28px;
+      background: #ffffff;
+      color: var(--black);
+      padding: 10px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
       position: sticky;
       top: 0;
       z-index: 20;
     }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
+    .nav-left { display: flex; align-items: center; }
     .nav-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      object-fit: contain;  
-      background: #ffffff;  
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      height: 42px;
+      width: auto;
+      display: block;
     }
-
-    .nav-title {
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 0.5px;
-    }
-
     .nav-links a {
-      color: #e6f4ff;
+      color: var(--black);
       margin-left: 18px;
       text-decoration: none;
       font-weight: 500;
@@ -73,7 +53,6 @@
       position: relative;
       padding-bottom: 2px;
     }
-
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -81,14 +60,10 @@
       bottom: -2px;
       width: 0;
       height: 2px;
-      background: #ffeea3;
+      background: var(--gold);
       transition: width 0.2s ease-out;
     }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
+    .nav-links a:hover::after { width: 100%; }
 
     .page {
       max-width: 1180px;
@@ -97,18 +72,14 @@
     }
 
     .intro-card {
-      background: linear-gradient(135deg, #ffffffdd, #f7fafc);
+      background: var(--card-bg);
       border-radius: var(--radius);
       padding: 18px 22px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      box-shadow: var(--shadow-soft);
     }
-
     .intro-badge {
-      background: #e0f4ff;
-      color: #0b76b5;
+      background: #fff7d1;
+      color: var(--black);
       padding: 4px 10px;
       border-radius: 999px;
       font-size: 11px;
@@ -118,24 +89,17 @@
       display: inline-block;
       margin-bottom: 6px;
     }
-
     .intro-title {
       margin: 0 0 4px 0;
       font-size: 20px;
       font-weight: 600;
-      color: #102a43;
     }
-
     .intro-text {
       margin: 0;
       font-size: 13px;
-      color: #52606d;
+      color: #4b5563;
     }
-
-    .intro-highlight {
-      font-weight: 600;
-      color: var(--primary-dark);
-    }
+    .intro-highlight { font-weight: 600; color: var(--gold-dark); }
 
     .layout-grid {
       display: grid;
@@ -143,11 +107,8 @@
       gap: 18px;
       margin-top: 18px;
     }
-
     @media (max-width: 900px) {
-      .layout-grid {
-        grid-template-columns: 1fr;
-      }
+      .layout-grid { grid-template-columns: 1fr; }
     }
 
     .card {
@@ -158,37 +119,19 @@
       position: relative;
       overflow: hidden;
     }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(11, 118, 181, 0.08), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.25s ease-out;
-      pointer-events: none;
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 6px;
-      font-size: 16px;
-      color: #102a43;
-    }
-
     .card-subtitle {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #829ab1;
+      color: #6b7280;
       margin-bottom: 8px;
       font-weight: 600;
     }
-
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
 
     label {
       display: block;
@@ -196,53 +139,44 @@
       margin-bottom: 3px;
       font-weight: 500;
       font-size: 13px;
-      color: #334e68;
+      color: #374151;
     }
-
     select, textarea, button {
       width: 100%;
       margin-top: 3px;
       padding: 9px 10px;
       border-radius: 8px;
-      border: 1px solid #cbd2d9;
+      border: 1px solid #d1d5db;
       box-sizing: border-box;
       font-family: inherit;
       font-size: 13px;
-      transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
+      transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out, background 0.15s, color 0.15s;
     }
-
     select:focus, textarea:focus {
       outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(11, 118, 181, 0.18);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(212,175,55,0.35);
     }
-
     textarea {
       resize: vertical;
       min-height: 72px;
     }
-
     button {
-      background: var(--primary);
-      color: white;
+      background: var(--gold);
+      color: var(--black);
       font-weight: 600;
       cursor: pointer;
-      border: none;
+      border: 1px solid var(--gold);
       margin-top: 14px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       font-size: 12px;
-      box-shadow: 0 6px 16px rgba(11, 118, 181, 0.3);
+      box-shadow: 0 6px 16px rgba(212,175,55,0.4);
     }
-
     button:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
-    }
-
-    button:active {
-      transform: translateY(0);
-      box-shadow: 0 4px 10px rgba(11, 118, 181, 0.2);
+      background: var(--black);
+      color: var(--gold);
+      border-color: var(--black);
     }
 
     #output {
@@ -250,19 +184,14 @@
       margin-top: 10px;
       line-height: 1.45;
       font-size: 13px;
-      color: #243b53;
+      color: #111827;
       border-radius: 8px;
-      background: #f8fafc;
+      background: #ffffff;
       padding: 10px 12px;
       max-height: 260px;
       overflow-y: auto;
     }
-
-    .alert {
-      color: var(--danger);
-      font-weight: 600;
-    }
-
+    .alert { color: #b91c1c; font-weight: 600; }
 
     #chart, #ppcChart {
       border-radius: 10px;
@@ -270,19 +199,16 @@
       background: #ffffff;
       margin-top: 10px;
     }
-
     #chartLabel, #ppcLabel {
       margin-top: 8px;
       font-size: 12px;
-      color: #52606d;
+      color: #4b5563;
     }
-
     #learningInfo {
       margin-top: 4px;
       font-size: 12px;
-      color: #829ab1;
+      color: #6b7280;
     }
-
     #alertsBox ul {
       padding-left: 20px;
       margin: 6px 0 0 0;
@@ -290,82 +216,64 @@
     #alertsBox li {
       margin-bottom: 4px;
       font-size: 12px;
-      color: #364152;
+      color: #374151;
     }
 
     .ppc-options {
       margin-top: 6px;
       font-size: 12px;
-      color: #52606d;
+      color: #4b5563;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
-
     .ppc-options label {
       font-weight: 500;
       margin-right: 6px;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: #f5f7fa;
+      background: #ffffff;
       border-radius: 999px;
       padding: 3px 8px;
+      border: 1px solid #e5e7eb;
       cursor: pointer;
     }
-
     .ppc-options input[type="radio"] {
-      accent-color: var(--primary);
+      accent-color: var(--gold);
       cursor: pointer;
     }
-
     #ppcExplanation {
       margin-top: 8px;
       font-size: 12px;
-      color: #52606d;
-    }
-
-    .badge-small {
-      display: inline-block;
-      background: #fff7e6;
-      color: #a15d08;
-      padding: 2px 7px;
-      border-radius: 999px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      margin-left: 6px;
+      color: #4b5563;
     }
   </style>
 </head>
 <body>
   <div class="nav">
-<div class="nav-left">
-  <img src="Untitled design.png" alt="CEA logo" class="nav-logo">
-  <div class="nav-title">CEA – Circular Economy AI</div>
-</div>
-<div class="nav-links">
-  <a href="/home">Home</a>
-  <a href="/ai">AI</a>
-  <a href="/companies">Companies</a>
-  <a href="/contact">Contact Us</a>
-  <a href="/login">Log In</a>
-</div>
+    <div class="nav-left">
+      <img src="Black White Bold Simple Initials Name Logo.png" alt="CEA logo" class="nav-logo">
+    </div>
+    <div class="nav-links">
+      <a href="/home">Home</a>
+      <a href="/ai">AI</a>
+      <a href="/companies">Companies</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/login">Log In</a>
+    </div>
   </div>
 
   <main class="page">
     <section class="intro-card">
-      <div>
-        <div class="intro-badge">Australia · Circular Economy · Prototype</div>
-        <h1 class="intro-title">Interactive CEA AI Console</h1>
-        <p class="intro-text">
-          Choose who you are, select a sector, describe your problem, and let CEA
-          generate <span class="intro-highlight">data‑driven circular‑economy solutions</span>
-          for Australia. The system also simulates how AI
-          <span class="intro-highlight">learns and improves over time</span>.
-        </p>
-      </div>
+      <div class="intro-badge">AI Console</div>
+      <h1 class="intro-title">Interactive CEA AI for Australia</h1>
+      <p class="intro-text">
+        Choose who you are, select a sector, describe your problem, and let CEA
+        generate <span class="intro-highlight">circular‑economy solutions</span>.
+        The AI also simulates how forecasts improve as it
+        <span class="intro-highlight">learns over the years</span>.
+      </p>
     </section>
 
     <section class="layout-grid">
@@ -410,7 +318,7 @@
       <div class="right-col">
         <div class="card">
           <div class="card-subtitle">Forecast</div>
-          <h3>Baseline vs. With CEA <span class="badge-small">5‑Year Index</span></h3>
+          <h3>Baseline vs. With CEA</h3>
           <canvas id="chart" width="900" height="260"></canvas>
           <p id="chartLabel">
             Ask CEA to see a forecast for the selected sector.
@@ -425,8 +333,8 @@
           <h3>PPC: Economic vs Social Features</h3>
           <p style="font-size: 12px; margin-bottom: 6px;">
             The Production Possibilities Curve shows how we allocate scarce
-            development resources between
-            <strong>economic AI tools</strong> and <strong>social AI tools</strong>.
+            development resources between <strong>economic AI tools</strong>
+            and <strong>social AI tools</strong>.
           </p>
 
           <div class="ppc-options">
@@ -452,8 +360,8 @@
             PPC Frontier: Economic AI Features (x‑axis) vs Social AI Features (y‑axis).
           </p>
           <p id="ppcExplanation">
-            At the balanced point B, CEA splits its limited developers, time, and
-            budget between economic and social features. Moving to E or S shows the
+            At point B, CEA splits its limited developers, time, and budget between
+            economic and social features. Moving to E or S shows the
             <strong>opportunity cost</strong> of focusing more on one side.
           </p>
         </div>
@@ -474,7 +382,7 @@
   </main>
 
   <script>
-
+    // ------------ MAIN AI <-> PYTHON  ------------
     async function runCEA() {
       const userType = document.getElementById("userType").value;
       const sector   = document.getElementById("sector").value;
@@ -555,13 +463,10 @@
     }
 
     function escapeHtml(text) {
-      return text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+      return text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
     }
 
-
+    // ------------ LINE CHART (from Python) ------------
     function drawChart(data) {
       const canvas = document.getElementById("chart");
       const labelEl = document.getElementById("chartLabel");
@@ -595,10 +500,9 @@
         const ratio = (value - minVal) / (maxVal - minVal);
         return marginTop + innerHeight - ratio * innerHeight;
       }
-
       const xStep = innerWidth / (years.length - 1);
 
-      ctx.strokeStyle = "#333";
+      ctx.strokeStyle = "#374151";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(marginLeft, marginTop);
@@ -606,13 +510,13 @@
       ctx.lineTo(marginLeft + innerWidth, marginTop + innerHeight);
       ctx.stroke();
 
-      ctx.fillStyle = "#333";
+      ctx.fillStyle = "#374151";
       ctx.font = "12px Arial";
       const yTicks = [0, 25, 50, 75, 100];
       yTicks.forEach(v => {
         const y = yPos(v);
         ctx.fillText(v.toString(), marginLeft - 30, y + 4);
-        ctx.strokeStyle = "#eee";
+        ctx.strokeStyle = "#e5e7eb";
         ctx.beginPath();
         ctx.moveTo(marginLeft, y);
         ctx.lineTo(marginLeft + innerWidth, y);
@@ -622,7 +526,7 @@
       years.forEach((year, i) => {
         const x = marginLeft + i * xStep;
         const y = marginTop + innerHeight;
-        ctx.fillStyle = "#333";
+        ctx.fillStyle = "#374151";
         ctx.fillText(year.toString(), x - 10, y + 20);
       });
 
@@ -639,20 +543,21 @@
         ctx.stroke();
       }
 
-      drawLine(baseline, "#f97373"); 
-      drawLine(withCEA, "#0b76b5");
+      drawLine(baseline, "#f97373");
+      drawLine(withCEA, "#d4af37");
 
       ctx.fillStyle = "#f97373";
       ctx.fillRect(marginLeft + 10, marginTop + 5, 12, 12);
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = "#111827";
       ctx.fillText("Baseline (no CEA)", marginLeft + 30, marginTop + 15);
 
-      ctx.fillStyle = "#0b76b5";
+      ctx.fillStyle = "#d4af37";
       ctx.fillRect(marginLeft + 10, marginTop + 22, 12, 12);
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = "#111827";
       ctx.fillText("With CEA (learning over years)", marginLeft + 30, marginTop + 32);
     }
 
+    // ------------ PPC GRAPH ------------
 
     function drawPPC(mode) {
       const canvas = document.getElementById("ppcChart");
@@ -685,8 +590,7 @@
         return marginTop + innerHeight - ratio * innerHeight;
       }
 
-      // Axes
-      ctx.strokeStyle = "#333";
+      ctx.strokeStyle = "#374151";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(marginLeft, marginTop);
@@ -694,17 +598,16 @@
       ctx.lineTo(marginLeft + innerWidth, marginTop + innerHeight);
       ctx.stroke();
 
-      // Axis labels
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = "#111827";
       ctx.font = "11px Arial";
-      ctx.fillText("Economic AI Features", marginLeft + innerWidth/2 - 55, marginTop + innerHeight + 30);
+      ctx.fillText("Economic AI Features", marginLeft + innerWidth/2 - 55, marginTop + innerHeight + 28);
       ctx.save();
       ctx.translate(marginLeft - 32, marginTop + innerHeight/2 + 40);
       ctx.rotate(-Math.PI / 2);
       ctx.fillText("Social AI Features", 0, 0);
       ctx.restore();
 
-      ctx.strokeStyle = "#0b76b5";
+      ctx.strokeStyle = "#d4af37";
       ctx.lineWidth = 2;
       ctx.beginPath();
       for (let x = 0; x <= 100; x += 1) {
@@ -721,28 +624,26 @@
         xChoice = 80;
         yChoice = 100 - (xChoice * xChoice / 100);
         label = "E";
-        text = "More economic features (Point E): CEA focuses on budgeting, forecasting, and " +
-               "investment tools. Opportunity cost: fewer advanced social features (health, " +
-               "education, crime alerts).";
+        text = "More economic features (Point E): focus on budgeting, forecasting, and " +
+               "investment tools. Opportunity cost: fewer advanced social features.";
       } else if (mode === "social") {
         xChoice = 20;
         yChoice = 100 - (xChoice * xChoice / 100);
         label = "S";
-        text = "More social features (Point S): CEA focuses on healthcare, education analytics, " +
-               "and crime alerts. Opportunity cost: fewer advanced economic management tools.";
+        text = "More social features (Point S): focus on healthcare, education analytics, " +
+               "and crime alerts. Opportunity cost: fewer advanced economic tools.";
       } else {
         xChoice = 50;
         yChoice = 100 - (xChoice * xChoice / 100);
         label = "B";
-        text = "Balanced mix (Point B): CEA splits resources between economic tools and social " +
-               "support tools. Both improve, but neither reaches the absolute maximum. This is " +
-               "often the realistic choice for governments.";
+        text = "Balanced mix (Point B): resources split between economic tools and social " +
+               "support tools. Both improve, but neither reaches the maximum.";
       }
 
       const px = xPos(xChoice);
       const py = yPos(yChoice);
 
-      ctx.fillStyle = "#f97316";
+      ctx.fillStyle = "#111827";
       ctx.beginPath();
       ctx.arc(px, py, 5, 0, 2 * Math.PI);
       ctx.fill();
@@ -751,7 +652,6 @@
       ctx.font = "12px Arial";
       ctx.fillText(label, px + 7, py - 7);
 
-      // Small x,y ticks
       ctx.font = "11px Arial";
       ctx.fillText("Econ: " + Math.round(xChoice), px - 20, marginTop + innerHeight + 15);
       ctx.fillText("Soc: " + Math.round(yChoice), marginLeft - 37, py + 4);
@@ -760,7 +660,6 @@
         "PPC Frontier: Economic AI Features (x‑axis) vs Social AI Features (y‑axis).";
       explEl.textContent = text;
     }
-
 
     window.onload = function () {
       loadAlerts();
