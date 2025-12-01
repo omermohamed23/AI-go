@@ -6,13 +6,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0b76b5;
-      --primary-dark: #095f8f;
-      --nav-bg: linear-gradient(90deg, #0b3c5d, #0b76b5);
-      --bg: #edf2f7;
+      --gold: #d4af37;
+      --gold-dark: #b89024;
+      --black: #111827;
+      --bg: #ffffff;
       --card-bg: #ffffff;
-      --accent: #f5a623;
-      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.12);
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
       --radius: 14px;
     }
 
@@ -20,20 +19,21 @@
 
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #f3f4ff, #edf2f7 40%, #dde5f0 100%);
+      background: var(--bg);
       margin: 0;
       padding: 0;
-      color: #1f2933;
+      color: var(--black);
     }
 
     .nav {
-      background: var(--nav-bg);
-      color: #fff;
-      padding: 12px 28px;
+      background: #ffffff;
+      color: var(--black);
+      padding: 10px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
       position: sticky;
       top: 0;
       z-index: 20;
@@ -41,25 +41,14 @@
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 10px;
     }
     .nav-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      object-fit: contain;   
-      background: #ffffff;  
-      padding: 2px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-    }
-
-    .nav-title {
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 0.5px;
+      height: 42px;
+      width: auto;
+      display: block;
     }
     .nav-links a {
-      color: #e6f4ff;
+      color: var(--black);
       margin-left: 18px;
       text-decoration: none;
       font-weight: 500;
@@ -74,11 +63,12 @@
       bottom: -2px;
       width: 0;
       height: 2px;
-      background: #ffeea3;
+      background: var(--gold);
       transition: width 0.2s ease-out;
     }
     .nav-links a:hover::after { width: 100%; }
 
+    /* PAGE LAYOUT */
     .page {
       max-width: 1180px;
       margin: 22px auto 32px auto;
@@ -93,20 +83,18 @@
       margin-bottom: 18px;
     }
     @media (max-width: 900px) {
-      .intro-hero {
-        grid-template-columns: 1fr;
-      }
+      .intro-hero { grid-template-columns: 1fr; }
     }
 
     .intro-text-block {
-      background: linear-gradient(135deg, #ffffffdd, #f7fafc);
+      background: #f9fafb;
       border-radius: var(--radius);
       padding: 22px 24px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+      box-shadow: var(--shadow-soft);
     }
     .intro-badge {
-      background: #e0f4ff;
-      color: #0b76b5;
+      background: #fff7d1;
+      color: var(--black);
       padding: 4px 10px;
       border-radius: 999px;
       font-size: 11px;
@@ -120,28 +108,27 @@
       margin: 0 0 6px 0;
       font-size: 24px;
       font-weight: 600;
-      color: #102a43;
     }
     .intro-sub {
       margin: 0 0 12px 0;
       font-size: 13px;
-      color: #52606d;
+      color: #4b5563;
     }
-    .intro-highlight { color: var(--primary-dark); font-weight: 600; }
+    .intro-highlight { color: var(--gold-dark); font-weight: 600; }
 
     .hero-points {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 8px 18px;
       font-size: 13px;
-      color: #364152;
+      color: #4b5563;
       margin: 10px 0 12px 0;
       padding: 0;
       list-style: none;
     }
     .hero-points li::before {
       content: "• ";
-      color: var(--primary);
+      color: var(--gold);
     }
 
     .hero-actions {
@@ -159,31 +146,32 @@
       font-size: 12px;
       text-decoration: none;
       cursor: pointer;
-      border: none;
+      border: 1px solid transparent;
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
     .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 6px 16px rgba(11, 118, 181, 0.3);
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
     }
     .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-1px);
+      background: var(--gold-dark);
+      border-color: var(--gold-dark);
     }
     .btn-ghost {
-      background: rgba(255,255,255,0.9);
-      color: #102a43;
-      border: 1px solid #d8e2ec;
+      background: var(--black);
+      color: var(--gold);
+      border-color: var(--black);
     }
     .btn-ghost:hover {
-      background: #f5f7fa;
+      background: #000000;
+      border-color: #000000;
     }
 
     .intro-side-card {
-      background: var(--card-bg);
+      background: #f9fafb;
       border-radius: var(--radius);
       padding: 18px 20px;
       box-shadow: var(--shadow-soft);
@@ -192,17 +180,11 @@
       margin: 0 0 6px 0;
       font-size: 16px;
       font-weight: 600;
-      color: #102a43;
     }
     .mini-metric {
       margin-top: 8px;
-      font-size: 12px;
-      color: #52606d;
-    }
-    .metric-number {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--primary-dark);
+      font-size: 13px;
+      color: #4b5563;
     }
 
     .grid-2 {
@@ -211,71 +193,56 @@
       gap: 18px;
     }
     @media (max-width: 800px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
+      .grid-2 { grid-template-columns: 1fr; }
     }
 
     .card {
-      background: var(--card-bg);
+      background: #f9fafb;
       border-radius: var(--radius);
       padding: 16px 20px 18px 20px;
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
     }
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(11, 118, 181, 0.08), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.25s ease-out;
-      pointer-events: none;
-    }
-    .card:hover::before { opacity: 1; }
-
     .card h2 {
       margin-top: 0;
       margin-bottom: 4px;
       font-size: 17px;
-      color: #102a43;
     }
     .card-subtitle {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: #829ab1;
+      color: #6b7280;
       margin-bottom: 8px;
       font-weight: 600;
     }
     .card p {
       margin: 4px 0 0 0;
       font-size: 13px;
-      color: #52606d;
+      color: #4b5563;
     }
     .card ul {
       margin: 6px 0 0 18px;
       padding: 0;
       font-size: 13px;
-      color: #52606d;
+      color: #4b5563;
     }
   </style>
 </head>
 <body>
-  <div class="nav">
-<div class="nav-left">
-  <img src="Untitled design.png" alt="CEA logo" class="nav-logo">
-  <div class="nav-title">CEA – Circular Economy AI</div>
-</div>
-<div class="nav-links">
-  <a href="/home">Home</a>
-  <a href="/ai">AI</a>
-  <a href="/companies">Companies</a>
-  <a href="/contact">Contact Us</a>
-  <a href="/login">Log In</a>
-</div>
+<div class="nav">
+  <div class="nav-left">
+    <img src="Black White Bold Simple Initials Name Logo.png" alt="CEA logo" class="nav-logo">
   </div>
+  <div class="nav-links">
+    <a href="/home">Home</a>
+    <a href="/ai">AI</a>
+    <a href="/companies">Companies</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/login">Log In</a>
+  </div>
+</div>
 
   <main class="page">
     <section class="intro-hero">
@@ -298,20 +265,20 @@
 
         <div class="hero-actions">
           <a class="btn-primary" href="/ai">Try the CEA AI</a>
-          <a class="btn-ghost" href="/contact">Talk to our team</a>
+          <a class="btn-ghost" href="/companies">View company growth</a>
         </div>
       </div>
 
       <div class="intro-side-card">
         <h2 class="intro-side-title">Why Start in Australia?</h2>
-        <p style="font-size: 13px; color: #52606d;">
+        <p>
           Australia faces slow growth, high household debt, and productivity
           challenges – but is also advanced in technology and institutions.
           That makes it the perfect testbed for CEA.
         </p>
 
         <div class="mini-metric">
-          <div>Key Challenges Addressed:</div>
+          <div><strong>Key Challenges Addressed:</strong></div>
           <ul>
             <li>Housing stress & affordability</li>
             <li>Weak productivity & investment</li>
@@ -325,9 +292,7 @@
       <article class="card">
         <div class="card-subtitle">What CEA Does</div>
         <h2>AI + Circular Marketplace</h2>
-        <p>
-          CEA combines economic analysis with a circular marketplace. It:
-        </p>
+        <p>CEA combines economic analysis with a circular marketplace. It:</p>
         <ul>
           <li>Analyses data from government and businesses.</li>
           <li>Recommends circular solutions (reuse, repair, share).</li>
@@ -339,9 +304,7 @@
       <article class="card">
         <div class="card-subtitle">Who Benefits</div>
         <h2>Governments, CEOs & Society</h2>
-        <p>
-          CEA is designed for:
-        </p>
+        <p>CEA is designed for:</p>
         <ul>
           <li><strong>Government</strong> – smarter budgets, less waste, better targeting.</li>
           <li><strong>Businesses</strong> – cheaper inputs, new revenue from surplus stock.</li>
