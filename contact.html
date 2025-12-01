@@ -26,38 +26,26 @@
     }
 
     .nav {
-      background: var(--nav-bg);
-      color: #fff;
-      padding: 12px 28px;
+      background: #ffffff;
+      color: var(--black);
+      padding: 10px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
       position: sticky;
       top: 0;
       z-index: 20;
     }
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .nav-left { display: flex; align-items: center; }
     .nav-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      object-fit: contain;  
-      background: #ffffff;  
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-    }
-
-    .nav-title {
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 0.5px;
+      height: 42px;
+      width: auto;
+      display: block;
     }
     .nav-links a {
-      color: #e6f4ff;
+      color: var(--black);
       margin-left: 18px;
       text-decoration: none;
       font-weight: 500;
@@ -72,10 +60,9 @@
       bottom: -2px;
       width: 0;
       height: 2px;
-      background: #ffeea3;
+      background: var(--gold);
       transition: width 0.2s ease-out;
     }
-    .nav-links a:hover::after { width: 100%; }
 
     .page {
       max-width: 900px;
